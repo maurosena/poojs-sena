@@ -8,11 +8,12 @@ class Persona {
     //automaticamente cada vez que creamos un objeto con la palabra "new"
     //Sirve tambien para inicializar las propiedades (los datos) del objeto
 
-    constructor(nombre, edad, profesion){
+    constructor(nombre, edad, profesion, peso){
         //Usaremos this para referirnos a este objeto que se esta creando en el momento
         this.nombre = nombre;
         this.edad = edad;
         this.profesion = profesion;
+        this.peso = peso;
     }
 
     //2) Metodos
@@ -29,6 +30,10 @@ class Persona {
 
    esMayorDeEdad(){
     return this.edad >= 18;
+   }
+
+   miPeso(){
+    return this.peso
    }
 }
 
@@ -47,11 +52,12 @@ class Persona {
     const nombre = document.getElementById('nombre').value;
     const edad = Number(document.getElementById('edad').value);
     const profesion = document.getElementById('profesion').value;
+    const peso = document.getElementById('peso').value;
 
     //5) Creacion de un objeto (INSTANCIA)
     // new Persona  ejecuta el constructory nos entrega
     //un objeto nuevo, independiente de todo
-    const nuevaPersona = new Persona(nombre, edad, profesion);
+    const nuevaPersona = new Persona(nombre, edad, profesion, peso);
 
     //Guardamos el objeto en el arreglo
     personas.push(nuevaPersona);
@@ -79,6 +85,7 @@ class Persona {
             <strong>Objeto # ${indice + 1}</strong><br>
             ${persona.saludar()}<br>
             ${persona.describirProfesion()}<br>
+            Mi peso es: ${persona.miPeso()}
             Es mayor de edad ? ${persona.esMayorDeEdad() ? 'SI' : "NO"} 
         `;
         listaPersonas.appendChild(tarjeta);
